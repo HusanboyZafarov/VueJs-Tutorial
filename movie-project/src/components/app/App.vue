@@ -1,14 +1,14 @@
 <template>
   <div class="app font-monospace">
     <div class="content">
-      <AppInfo />
+      <AppInfo :allMoviesCount="movies.length" :favouriteMoviesCount="movies.filter(e => e.favourite).length" />
       <div class="search-panel">
         <SearchPanel />
         <AppFilter />
       </div>
 
-      <MovieList />
-      <MovieAddForm />
+      <MovieList :movies="movies" />
+      <MovieAddForm @createMovie="createMovie" />
     </div>
   </div>
 </template>
@@ -30,9 +30,33 @@ export default {
   },
   data() {
     return {
-
+      movies: [
+        {
+          name: "Omar",
+          viewers: 555,
+          favourite: false,
+          like: true,
+        },
+        {
+          name: "Empire of Osman",
+          viewers: 155,
+          favourite: false,
+          like: false,
+        },
+        {
+          name: "Ertugrul",
+          viewers: 355,
+          favourite: true,
+          like: false,
+        },
+      ]
     }
   },
+  methods: {
+    createMovie(item) {
+      this.movies.push(item)
+    }
+  }
 }
 </script>
 
