@@ -1,11 +1,28 @@
 <template>
-    <h1>Movie list</h1>
+    <ul class="movie-list list-group">
+        <MovieListItem />
+        <MovieListItem />
+        <MovieListItem />
+    </ul>
 </template>
 
 <script>
-export default {
+import MovieListItem from '../movie-list-item/MovieListItem.vue';
 
+export default {
+    components: {
+        MovieListItem
+    }
 }
 </script>
 
-<style></style>
+<style scoped>
+.movie-list {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #fcfaf5;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 15px 15px 15px #00000015;
+}
+</style>
