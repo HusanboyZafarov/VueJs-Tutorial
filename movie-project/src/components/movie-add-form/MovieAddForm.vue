@@ -6,6 +6,7 @@
                 @input="name = $event.target.value" />
             <input type="text" class="form-control new-movie-label" placeholder="Nechi marotaba ko'rilgan?"
                 :value="viewers" @input="viewers = $event.target.value" />
+                
             <button class="btn btn-outline-dark" type="submit" @click="addMovie">Qo'shish</button>
         </form>
     </div>
@@ -26,6 +27,7 @@ export default {
                 viewers: this.viewers,
                 favourite: false,
                 like: false,
+                id: Date.now(),
             }
             if (this.name && this.viewers) {
                 this.$emit("createMovie", newMovie)
@@ -43,6 +45,7 @@ export default {
     padding: 1.5rem;
     background: #fcfaf5;
     border-radius: 4px;
+
     box-shadow: 15px 15px 15px #00000015;
 }
 </style>

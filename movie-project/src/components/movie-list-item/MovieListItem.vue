@@ -1,10 +1,10 @@
 <template>
     <li class="list-group-item d-flex justify-content-between"
         :class="[{ like: movie.like }, { favourite: movie.favourite }]">
-        <span class="list-group-item-label">{{ movie.name }}</span>
+        <span class="list-group-item-label" @click="onFavourite">{{ movie.name }}</span>
         <input type="number" class="list-group-item-input" :value="movie.viewers">
         <div class="d-flex justify-content-center align-items-center ">
-            <button type="button" class="btn-cookie btn-sm">
+            <button type="button" @click="onLike" class="btn-cookie btn-sm">
                 <i class="fa-solid fa-cookie"></i>
             </button>
 
@@ -24,6 +24,15 @@ export default {
             type: Object,
             required: true
         }
+    },
+    methods: {
+        onLike() {
+            this.$emit('onLike', this.movie.id)
+        },
+
+        onFavourite() {
+            // this.movie.favourite = this.movie.favourite == true ? false : true
+        },
     }
 }
 </script>

@@ -7,7 +7,7 @@
         <AppFilter />
       </div>
 
-      <MovieList :movies="movies" />
+      <MovieList :movies="movies" @onlike='onLikeHandler' />
       <MovieAddForm @createMovie="createMovie" />
     </div>
   </div>
@@ -36,18 +36,21 @@ export default {
           viewers: 555,
           favourite: false,
           like: true,
+          id: 1,
         },
         {
           name: "Empire of Osman",
           viewers: 155,
           favourite: false,
           like: false,
+          id: 2,
         },
         {
           name: "Ertugrul",
           viewers: 355,
           favourite: true,
           like: false,
+          id: 3,
         },
       ]
     }
@@ -55,6 +58,9 @@ export default {
   methods: {
     createMovie(item) {
       this.movies.push(item)
+    },
+    onLikeHandler(id) {
+      console.log(id);
     }
   }
 }
